@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         //params.put(OPTIMIZATION_NONE,"");
 
         params.put(WIDTH, "300");
-        
         params.put(HEIGHT, "200");
 
         DexecureUrlMaker helper = new DexecureUrlMaker("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", "https", params);
