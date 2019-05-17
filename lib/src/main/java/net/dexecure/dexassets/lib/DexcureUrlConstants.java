@@ -1,4 +1,4 @@
-package net.dexecure.dexassets.dexecurelib;
+package net.dexecure.dexassets.lib;
 
 public interface DexcureUrlConstants {
 
