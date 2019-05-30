@@ -16,7 +16,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -45,8 +45,9 @@ dependencies {
 
 
 ext {
-    bintrayRepo = 'Dexecure'
-    bintrayName = 'Dexecure'
+    bintrayRepo = 'android-sdk'
+    bintrayName = 'dexecure'
+    bintrayOrg = 'dexecure'
 
     publishedGroupId = 'net.dexecure.dexassets'
     libraryName = 'Dexecureimageresizing'
@@ -57,7 +58,7 @@ ext {
     siteUrl = 'https://github.com/Dexecure/android-sdk'
     gitUrl = 'https://github.com/Dexecure/android-sdk'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '0.0.1'
 
     developerId = 'dexecure'
     developerName = 'dexecure'
@@ -134,6 +135,7 @@ bintray {
     pkg {
         repo = bintrayRepo
         name = bintrayName
+        userOrg = bintrayOrg
         desc = libraryDescription
         websiteUrl = siteUrl
         vcsUrl = gitUrl
