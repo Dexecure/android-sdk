@@ -116,7 +116,7 @@ public class DexecureURLBuilder {
                     queryPairs.add(k + encodedValue);
                     break;
                 default:
-                    queryPairs.add(k + encodedValue);
+                    queryPairs.add(k + "=" + encodedValue);
             }
 
         }

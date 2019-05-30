@@ -177,7 +177,7 @@ public class UnitTest {
         params.put("sdfsdfcd", "plkgdj");
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?sdfsdfcdplkgdj");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?sdfsdfcd=plkgdj");
     }
 
     @Test
