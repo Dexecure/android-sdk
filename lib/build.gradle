@@ -55,8 +55,9 @@ ext {
 
     libraryDescription = 'Dexecure library for optimising assets'
 
-    siteUrl = 'https://github.com/Dexecure/android-sdk'
-    gitUrl = 'https://github.com/Dexecure/android-sdk'
+    siteUrl = 'https://dexecure.com'
+    gitUrl = 'https://github.com/Dexecure/android-sdk.git'
+
 
     libraryVersion = '0.0.1'
 
