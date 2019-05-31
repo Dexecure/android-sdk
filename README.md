@@ -48,22 +48,17 @@ Dependencies for running tests (junit, etc) are provided (in android-sdk/lib/src
 
 To begin creating dexecure URLs programmatically, simply add the jar to your project's classpath and import the dexecure library. The URL builder can be reused to create URLs for any images on the domains it is provided.
 
+
 package net.dexecure.dexassets.sample;
-
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import net.dexecure.dexassets.dexecurelib.DexecureURLBuilder;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.HEIGHT;
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
