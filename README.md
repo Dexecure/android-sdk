@@ -46,5 +46,38 @@ Dependencies for running tests (junit, etc) are provided (in android-sdk/lib/src
 
 # Basic Usage
 
-To begin creating imgix URLs programmatically, simply add the jar to your project's classpath and import the imgix library. The URL builder can be reused to create URLs for any images on the domains it is provided.
+To begin creating dexecure URLs programmatically, simply add the jar to your project's classpath and import the dexecure library. The URL builder can be reused to create URLs for any images on the domains it is provided.
 
+package net.dexecure.dexassets.sample;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import net.dexecure.dexassets.dexecurelib.DexecureURLBuilder;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.HEIGHT;
+import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put(RESIZE, "");
+        params.put(HEIGHT, "200");
+        params.put(WIDTH, "300");
+
+        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
+        System.out.println(urlMaker.getURL());
+    }
+}
+
+// Prints out:
+// https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=h200,w300
