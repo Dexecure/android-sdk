@@ -35,3 +35,16 @@ buildscript {
         
     }
 }
+
+# Running Tests
+
+To run tests clone this project and run:
+
+gradle test
+
+Dependencies for running tests (junit, etc) are provided (in android-sdk/lib/src/androidTest/java/net/dexecure/dexassets/lib/ and referenced in the build config).
+
+# Basic Usage
+
+To begin creating imgix URLs programmatically, simply add the jar to your project's classpath and import the imgix library. The URL builder can be reused to create URLs for any images on the domains it is provided.
+
