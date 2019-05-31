@@ -14,7 +14,8 @@ The library itself has no external dependencies. Although if you want to build f
 # Gradle & JCenter
 To add Dexecure-Java to your project, include the following in your project's build.gradle:
 
-dependencies {
+
+# dependencies {
    compile 'net.dexecure.dexassets:lib:0.0.1'
 }
 
