@@ -18,7 +18,7 @@ To add Dexecure-Java to your project, include the following in your project's bu
 dependencies {
 
    compile 'net.dexecure.dexassets:lib:0.0.1'
-   
+  
 }
 
 
@@ -34,5 +34,4 @@ buildscript {
         jcenter()
         
     }
-    
 }
