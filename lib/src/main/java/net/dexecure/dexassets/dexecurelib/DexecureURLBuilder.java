@@ -1,5 +1,7 @@
 package net.dexecure.dexassets.dexecurelib;
 
+import android.annotation.SuppressLint;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -19,30 +21,30 @@ import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.RESIZE;
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.RESIZE_WITH_CENTER_CROP;
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
 
-public class DexecureUrlMaker {
+public class DexecureURLBuilder {
 
     private String domain;
     private String path;
-    private String scheme;
+    private boolean useHttps;
     private Map<String, String> parameters;
 
-    public DexecureUrlMaker(String domain, String path, String scheme, Map<String, String> parameters) {
+    public DexecureURLBuilder(String domain, String path, boolean useHttps, Map<String, String> parameters) {
         this.domain = domain;
         if (!path.startsWith("/")) {
             path = "/" + path;
         }
         this.path = path;
-        this.scheme = scheme;
+        this.useHttps = useHttps;
         this.parameters = parameters;
     }
 
-    public DexecureUrlMaker(String domain, String path, String scheme) {
-        this(domain, path, scheme, new LinkedHashMap<String, String>());
+    public DexecureURLBuilder(String domain, String path, boolean useHttps) {
+        this(domain, path, useHttps, new LinkedHashMap<String, String>());
     }
 
-    public DexecureUrlMaker(String domain, String path) {
-        this(domain, path, "http");
-    }
+//    public DexecureURLBuilder(String domain, String path) {
+//        this(domain, path, useHttps);
+//    }
 
     public void setParameter(String key, String value) {
         if (value != null && value.length() > 0) {
@@ -60,6 +62,7 @@ public class DexecureUrlMaker {
         setParameter(key, "");
     }
 
+    @SuppressLint("NewApi")
     private String encodeBase64(String str) {
         byte[] stringBytes = str.getBytes();
         String b64EncodedString = new String(Base64.getEncoder().encode(stringBytes));
@@ -77,7 +80,6 @@ public class DexecureUrlMaker {
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             String k = entry.getKey();
             String v = entry.getValue();
-
 
             String encodedValue;
 
@@ -116,26 +118,30 @@ public class DexecureUrlMaker {
                     queryPairs.add(k + encodedValue);
                     break;
                 default:
-                    queryPairs.add(k + encodedValue);
+                    queryPairs.add(k + "=" + encodedValue);
             }
 
         }
 
         String query = joinList(queryPairs, ",");
-        String decodedPath = DexecureUrlMaker.decodeURIComponent(path.substring(1));
+        String decodedPath = DexecureURLBuilder.decodeURIComponent(path.substring(1));
         if (decodedPath.startsWith("http://") || decodedPath.startsWith("https://")) {
-            path = "/" + DexecureUrlMaker.encodeURIComponent(decodedPath);
+            path = "/" + DexecureURLBuilder.encodeURIComponent(decodedPath);
         }
-        return buildURL(scheme, domain, path, query);
+        return buildURL(domain, path, query);
     }
 
+    public void setUseHttps(boolean useHttps) {
+        this.useHttps = useHttps;
+    }
 
     @Override
     public String toString() {
         return getURL();
     }
 
-    private static String buildURL(String scheme, String host, String path, String query) {
+    private String buildURL(String host, String path, String query) {
+        String scheme = this.useHttps ? "https" : "http";
         String url = String.format("%s://%s%s?%s", scheme, host, path, query);
         if (url.endsWith("#")) {
             url = url.substring(0, url.length() - 1);

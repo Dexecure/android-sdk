@@ -1,1 +1,1 @@
-include ':app', ':DexecureLib'
+include ':app', ':lib'
