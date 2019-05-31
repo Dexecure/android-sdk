@@ -76,10 +76,17 @@ public class MainActivity extends AppCompatActivity {
         params.put(HEIGHT, "200");
         params.put(WIDTH, "300");
 
-        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
+        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",false,params);
         System.out.println(urlMaker.getURL());
     }
 }
 
 // Prints out:
 // https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=h200,w300
+
+
+For HTTPS support, simply pass true in DexecureURLBuilder() constructor on the builder like : -
+
+ DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
+ 
+ 
