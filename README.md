@@ -50,12 +50,19 @@ To begin creating dexecure URLs programmatically, simply add the jar to your pro
 
 
 package net.dexecure.dexassets.sample;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import net.dexecure.dexassets.dexecurelib.DexecureURLBuilder;
+
 import java.util.LinkedHashMap;
+
 import java.util.Map;
+
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.HEIGHT;
+
 import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
 
 public class MainActivity extends AppCompatActivity {
