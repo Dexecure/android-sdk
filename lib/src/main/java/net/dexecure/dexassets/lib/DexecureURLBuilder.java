@@ -39,11 +39,7 @@ public class DexecureURLBuilder {
     public DexecureURLBuilder(String domain, String path, boolean useHttps) {
         this(domain, path, useHttps, new LinkedHashMap<String, String>());
     }
-
-//    public DexecureURLBuilder(String domain, String path) {
-//        this(domain, path, useHttps);
-//    }
-
+    
     public void setParameter(String key, String value) {
         if (value != null && value.length() > 0) {
             parameters.put(key, value);
@@ -60,6 +56,7 @@ public class DexecureURLBuilder {
         setParameter(key, "");
     }
 
+    @SuppressWarnings("NewApi")
     private String encodeBase64(String str) {
         byte[] stringBytes = str.getBytes();
         String b64EncodedString = new String(Base64.getEncoder().encode(stringBytes));
