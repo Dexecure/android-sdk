@@ -89,4 +89,38 @@ For HTTPS support, simply pass true in DexecureURLBuilder() constructor on the b
 
  DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
  
+ # For use all types of URL you can simply use like :- uncomment one by one, but only two URLs RESIZE & RESIZE_WITH_CENTER_CROP we pass height and width and for remaining you can use only 
  
+ Map<String, String> params = new LinkedHashMap<>();
+ params.put(DISABLE_RESIZE,"");
+         
+         OR
+         
+ Map<String, String> params = new LinkedHashMap<>();
+ params.put(OPTIMIZATION_DEFAULT, "");
+ 
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put(RESIZE, "");
+
+        //params.put(RESIZE_WITH_CENTER_CROP, "");
+        //params.put(DISABLE_RESIZE,"");
+        //params.put(OPTIMIZATION_DEFAULT, "");
+        //params.put(OPTIMIZATION_MILD, "");
+        //params.put(OPTIMIZATION_AGGRESSIVE, "");
+        //params.put(OPTIMIZATION_NONE,"");
+
+
+        params.put(HEIGHT, "200");
+        params.put(WIDTH, "300");
+
+        //params.put("sdfsdfcd", "plkgdj");
+
+        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
+        System.out.println(urlMaker.getURL());
+
+    }
