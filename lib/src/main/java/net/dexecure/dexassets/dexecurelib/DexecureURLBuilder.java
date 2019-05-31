@@ -73,7 +73,6 @@ public class DexecureURLBuilder {
 
         return b64EncodedString;
     }
-
     public String getURL() {
         List<String> queryPairs = new LinkedList<>();
 
@@ -88,7 +87,6 @@ public class DexecureURLBuilder {
             } else {
                 encodedValue = encodeURIComponent(v);
             }
-
             switch (k) {
                 case RESIZE:
                     queryPairs.add(k);
