@@ -1,4 +1,4 @@
-package net.dexecure.dexassets.lib;
+package net.dexecure.URLBuilder;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -10,17 +10,17 @@ import org.junit.runner.RunWith;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE_NONE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.HEIGHT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_AGGRESSIVE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_DEFAULT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MILD;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_NONE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_CENTER;
+import static net.dexecure.DexcureURLConstants.RESIZE;
+import static net.dexecure.DexcureURLConstants.RESIZE_NONE;
+import static net.dexecure.DexcureURLConstants.HEIGHT;
+import static net.dexecure.DexcureURLConstants.WIDTH;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_AGGRESSIVE;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_DEFAULT;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_NONE;
+import static net.dexecure.DexcureURLConstants.CROP_MODE;
+import static net.dexecure.DexcureURLConstants.CROP_CENTER;
 
 import static org.junit.Assert.assertEquals;
 
