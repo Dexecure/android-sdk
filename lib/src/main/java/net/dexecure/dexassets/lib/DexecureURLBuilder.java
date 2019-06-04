@@ -3,7 +3,7 @@ package net.dexecure.dexassets.lib;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Base64;
+import android.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,10 +56,9 @@ public class DexecureURLBuilder {
         setParameter(key, "");
     }
 
-    @SuppressWarnings("NewApi")
     private String encodeBase64(String str) {
         byte[] stringBytes = str.getBytes();
-        String b64EncodedString = new String(Base64.getEncoder().encode(stringBytes));
+        String b64EncodedString = new String(Base64.encode(stringBytes, Base64.DEFAULT));
 
         b64EncodedString = b64EncodedString.replace("=", "");
         b64EncodedString = b64EncodedString.replace('/', '_');
