@@ -13,6 +13,7 @@ import java.util.Map;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE_NONE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.HEIGHT;
+import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MODE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_AGGRESSIVE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_DEFAULT;
@@ -20,7 +21,7 @@ import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MILD;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_NONE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_CENTER;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
+
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("deprecation")
@@ -114,17 +115,6 @@ public class UnitTest {
     }
 
     @Test
-    public void urlBuildResizeCenterCropHeightWidth() {
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put(CROP_MODE, CROP_CENTER);
-        params.put(HEIGHT, "200");
-        params.put(WIDTH, "300");
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
-        System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=h200,w300");
-    }
-
-    @Test
     public void urlBuildDisableResize() {
         Map<String, String> params = new LinkedHashMap<>();
         params.put(RESIZE, RESIZE_NONE);
@@ -170,7 +160,7 @@ public class UnitTest {
     }
 
     @Test
-    public void urlBuildAnyStringInParam() {
+    public void urlBuildCustomQueryInParam() {
         Map<String, String> params = new LinkedHashMap<>();
         params.put("custom", "value");
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
@@ -179,12 +169,43 @@ public class UnitTest {
     }
 
     @Test
-    public void urlBuildWithNumberInParam() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
-        urlBuilder.setParameter(HEIGHT, 200);
-        urlBuilder.setParameter(WIDTH, 300);
+    public void urlBuildCustomQueriesInParam() {
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("custom", "value");
+        params.put("custom2", "value2");
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=h200,w300");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&custom2=value2");
     }
 
+    @Test
+    public void urlBuildCustomQueryAndResize() {
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("custom", "value");
+        params.put(WIDTH, "200");
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&resize=w200");
+    }
+
+    @Test
+    public void urlBuildCustomQueryAndOptMode() {
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("custom", "value");
+        params.put(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&opt=mild");
+    }
+
+    @Test
+    public void urlBuildCustomQueryAndCenterCrop() {
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("custom", "value");
+        params.put(CROP_MODE, CROP_CENTER);
+        params.put(HEIGHT, "250");
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true, params);
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&resize_c=h250");
+    }
 }
