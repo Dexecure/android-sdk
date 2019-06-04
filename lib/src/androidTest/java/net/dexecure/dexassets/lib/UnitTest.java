@@ -213,4 +213,19 @@ public class UnitTest {
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.createURL("proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&resize_c=h250");
     }
+
+    @Test
+    public void urlBuildParamIsEscaped() {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        urlBuilder.setParameter("custom", "hello world");
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=hello%20world");
+    }
+
+    public void urlBuildParamValueIsEscaped() {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        urlBuilder.setParameter("hello world", "yes");
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?hello%20world=yes");
+    }
 }
