@@ -33,29 +33,29 @@ public class UnitTest {
 
     @Test
     public void urlBuildOriginalPath() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
     }
 
     @Test
     public void urlBuildOriginalPathUsingSchema() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
     }
 
     @Test
     public void urlBuildPathUsingParamsWidth() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(WIDTH, "300");
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=w300");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=w300");
     }
 
     @Test
     public void urlBuildPathUsingParamsHeight() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(HEIGHT, "300");
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=h300");
@@ -63,7 +63,7 @@ public class UnitTest {
 
     @Test
     public void urlBuildPathUsingParamsHeightWidth() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(HEIGHT, "200");
         urlBuilder.setParameter(WIDTH, "300");
         System.out.println(urlBuilder);
@@ -72,16 +72,16 @@ public class UnitTest {
 
     @Test
     public void urlBuildPathUsingParamsWidthHeight() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(WIDTH, "300");
         urlBuilder.setParameter(HEIGHT, "200");
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=w300,h200");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=w300,h200");
     }
 
     @Test
     public void urlBuildResizeCenterCropHeight() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
         urlBuilder.setParameter(HEIGHT, "200");
         System.out.println(urlBuilder);
@@ -90,16 +90,16 @@ public class UnitTest {
 
     @Test
     public void urlBuildResizeCenterCropWidth() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
         urlBuilder.setParameter(WIDTH, "300");
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300");
     }
 
     @Test
     public void urlBuildResizeCenterCropWidthHeight() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
         urlBuilder.setParameter(WIDTH, "300");
         urlBuilder.setParameter(HEIGHT, "200");
@@ -109,15 +109,15 @@ public class UnitTest {
 
     @Test
     public void urlBuildDisableResize() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(RESIZE, RESIZE_NONE);
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=none");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=none");
     }
 
     @Test
     public void urlBuildOptimizationDefault() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=default");
@@ -125,7 +125,7 @@ public class UnitTest {
 
     @Test
     public void urlBuildOptimizationMild() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=mild");
@@ -133,23 +133,23 @@ public class UnitTest {
 
     @Test
     public void urlBuildOptimizationAggressive() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=aggressive");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=aggressive");
     }
 
     @Test
     public void urlBuildOptimizationNone() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", false);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=none");
+        assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=none");
     }
 
     @Test
     public void urlBuildCustomQueryInParam() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter("custom", "value");
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value");
@@ -157,7 +157,7 @@ public class UnitTest {
 
     @Test
     public void urlBuildCustomQueriesInParam() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter("custom", "value");
         urlBuilder.setParameter("custom2", "value2");
         System.out.println(urlBuilder);
@@ -166,7 +166,7 @@ public class UnitTest {
 
     @Test
     public void urlBuildCustomQueryAndResize() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter("custom", "value");
         urlBuilder.setParameter(WIDTH, "200");
         System.out.println(urlBuilder);
@@ -175,7 +175,7 @@ public class UnitTest {
 
     @Test
     public void urlBuildCustomQueryAndOptMode() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter("custom", "value");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
         System.out.println(urlBuilder);
@@ -184,11 +184,22 @@ public class UnitTest {
 
     @Test
     public void urlBuildCustomQueryAndCenterCrop() {
-        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true);
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
         urlBuilder.setParameter("custom", "value");
         urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
         urlBuilder.setParameter(HEIGHT, "250");
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.getURL(), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&resize_c=h250");
+    }
+
+    @Test
+    public void urlBuildHTTPURL() {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg");
+        urlBuilder.setHTTPS(false);
+        urlBuilder.setParameter("custom", "value");
+        urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
+        urlBuilder.setParameter(HEIGHT, "250");
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.getURL(), "http://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?custom=value&resize_c=h250");
     }
 }
