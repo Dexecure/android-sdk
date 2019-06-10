@@ -3,43 +3,33 @@ package net.dexecure.dexassets.lib;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import android.util.Base64;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.DISABLE_RESIZE;
+import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.HEIGHT;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_AGGRESSIVE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_DEFAULT;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MILD;
+import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MODE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_NONE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE_WITH_CENTER_CROP;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
 
 public class DexecureURLBuilder {
 
     private String domain;
     private String path;
-    private boolean useHttps;
-    private Map<String, String> parameters;
+    private boolean isHttps = true;
+    private Map<String, String> parameters = new LinkedHashMap<>();
+    private static String url;
 
-    public DexecureURLBuilder(String domain, String path, boolean useHttps, Map<String, String> parameters) {
+    public DexecureURLBuilder(String domain) {
         this.domain = domain;
-        if (!path.startsWith("/")) {
-            path = "/" + path;
-        }
-        this.path = path;
-        this.useHttps = useHttps;
-        this.parameters = parameters;
     }
 
-    public DexecureURLBuilder(String domain, String path, boolean useHttps) {
-        this(domain, path, useHttps, new LinkedHashMap<String, String>());
-    }
-    
     public void setParameter(String key, String value) {
         if (value != null && value.length() > 0) {
             parameters.put(key, value);
@@ -58,7 +48,7 @@ public class DexecureURLBuilder {
 
     private String encodeBase64(String str) {
         byte[] stringBytes = str.getBytes();
-        String b64EncodedString = new String(Base64.encode(stringBytes, Base64.DEFAULT));
+        String b64EncodedString = new String(stringBytes);
 
         b64EncodedString = b64EncodedString.replace("=", "");
         b64EncodedString = b64EncodedString.replace('/', '_');
@@ -67,13 +57,16 @@ public class DexecureURLBuilder {
         return b64EncodedString;
     }
 
-    public String getURL() {
-        List<String> queryPairs = new LinkedList<>();
+    public String createURL(String path) {
+        List<String> queryPairs = new ArrayList<>();
+
+        if (!path.startsWith("/")) {
+            path = "/" + path;
+        }
 
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             String k = entry.getKey();
             String v = entry.getValue();
-
 
             String encodedValue;
 
@@ -85,57 +78,70 @@ public class DexecureURLBuilder {
 
             switch (k) {
                 case RESIZE:
-                    queryPairs.add(k);
+                    queryPairs.add(v);
                     break;
-                case RESIZE_WITH_CENTER_CROP:
-                    queryPairs.add(k);
+                case OPTIMIZATION_MODE:
+                    switch (v) {
+                        case OPTIMIZATION_DEFAULT:
+                            queryPairs.add(v);
+                            break;
+                        case OPTIMIZATION_MILD:
+                            queryPairs.add(v);
+                            break;
+                        case OPTIMIZATION_AGGRESSIVE:
+                            queryPairs.add(v);
+                            break;
+                        case OPTIMIZATION_NONE:
+                            queryPairs.add(v);
+                            break;
+                    }
                     break;
-                case DISABLE_RESIZE:
-                    queryPairs.add(k);
-                    break;
-                case OPTIMIZATION_DEFAULT:
-                    queryPairs.add(k);
-                    break;
-                case OPTIMIZATION_MILD:
-                    queryPairs.add(k);
-                    break;
-                case OPTIMIZATION_AGGRESSIVE:
-                    queryPairs.add(k);
-                    break;
-                case OPTIMIZATION_NONE:
-                    queryPairs.add(k);
+                case CROP_MODE:
+                    queryPairs.add(v);
                     break;
                 case WIDTH:
-                    queryPairs.add(k + encodedValue);
-                    break;
                 case HEIGHT:
-                    queryPairs.add(k + encodedValue);
+                    if (queryPairs.contains("resize_c=")) {
+                        queryPairs.remove("resize_c=");
+                        if (queryPairs.contains(url)) {
+                            queryPairs.add(k + encodedValue);
+                        } else {
+                            queryPairs.add("resize_c=" + k + encodedValue);
+                            url = "resize_c=" + k + encodedValue;
+                        }
+                    } else {
+                        if (queryPairs.contains(url)) {
+                            queryPairs.add(k + encodedValue);
+                        } else {
+                            queryPairs.add("resize=" + k + encodedValue);
+                            url = "resize=" + k + encodedValue;
+                        }
+                    }
                     break;
                 default:
-                    queryPairs.add(k + "=" + encodedValue);
+                    String encodedKey = encodeURIComponent(k);
+                    queryPairs.add(encodedKey + "=" + encodedValue);
+                    break;
             }
-
         }
 
-        String query = joinList(queryPairs, ",");
+        String query = joinList(queryPairs);
+
         String decodedPath = DexecureURLBuilder.decodeURIComponent(path.substring(1));
+
         if (decodedPath.startsWith("http://") || decodedPath.startsWith("https://")) {
             path = "/" + DexecureURLBuilder.encodeURIComponent(decodedPath);
         }
+
         return buildURL(domain, path, query);
     }
 
-    public void setUseHttps(boolean useHttps) {
-        this.useHttps = useHttps;
-    }
-
-    @Override
-    public String toString() {
-        return getURL();
+    public void setHttps(boolean useHttps) {
+        this.isHttps = useHttps;
     }
 
     private String buildURL(String host, String path, String query) {
-        String scheme = this.useHttps ? "https" : "http";
+        String scheme = this.isHttps ? "https" : "http";
         String url = String.format("%s://%s%s?%s", scheme, host, path, query);
         if (url.endsWith("#")) {
             url = url.substring(0, url.length() - 1);
@@ -147,43 +153,60 @@ public class DexecureURLBuilder {
         return url;
     }
 
-
-    //TODO it is used to check comma delimeter to append in url
-    private static String joinList(List<String> arrayList, String separator) {
+    //TODO it is used to check , and &  delimiter append in url
+    private static String joinList(List<String> arrayList) {
         StringBuilder stringBuilder = new StringBuilder();
-        String sep = "";
 
-        if (arrayList.size() > 2) {
-            for (String str : arrayList) {
-
-                if (str.charAt(0) == 'w') {
-                    if (stringBuilder.toString().contains(sep))
-                        stringBuilder.append(str);
-                    else
-                        stringBuilder.append(str).append(sep);
-                } else if (str.charAt(0) == 'h') {
-                    if (stringBuilder.toString().contains(sep))
-                        stringBuilder.append(str);
-                    else
-                        stringBuilder.append(str).append(sep);
+        if (arrayList.size() > 1) {
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (arrayList.get(i).charAt(0) == 'w') {
+                    if (i == arrayList.size() - 1) {
+                        stringBuilder.append(arrayList.get(i));
+                    } else {
+                        stringBuilder.append(arrayList.get(i) + ",");
+                    }
+                } else if (arrayList.get(i).charAt(0) == 'h') {
+                    if (i == arrayList.size() - 1) {
+                        stringBuilder.append(arrayList.get(i));
+                    } else {
+                        stringBuilder.append(arrayList.get(i) + ",");
+                    }
+                } else if (url != null) {
+                    if (arrayList.get(i).contains(url)) {
+                        if (i == arrayList.size() - 1) {
+                            stringBuilder.append(arrayList.get(i));
+                        } else {
+                            stringBuilder.append(arrayList.get(i) + ",");
+                        }
+                    } else {
+                        if (i == arrayList.size() - 1) {
+                            stringBuilder.append(arrayList.get(i));
+                        } else {
+                            stringBuilder.append(arrayList.get(i) + "&");
+                        }
+                    }
                 } else {
-                    stringBuilder.append(str);
+                    if (i == arrayList.size() - 1) {
+                        stringBuilder.append(arrayList.get(i));
+                    } else {
+                        stringBuilder.append(arrayList.get(i) + "&");
+                    }
                 }
-                sep = separator;
             }
         } else {
-            for (String str : arrayList) {
-                stringBuilder.append(str);
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (i == arrayList.size() - 1) {
+                    stringBuilder.append(arrayList.get(i));
+                } else {
+                    stringBuilder.append(arrayList.get(i) + "&");
+                }
             }
         }
-
         return stringBuilder.toString();
     }
 
-
     public static String encodeURIComponent(String s) {
         String result = null;
-
         try {
             result = URLEncoder.encode(s, "UTF-8")
                     .replaceAll("\\+", "%20")
