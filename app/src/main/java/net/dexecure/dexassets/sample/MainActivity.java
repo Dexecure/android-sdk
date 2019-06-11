@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.dexecure.DexecureURLBuilder;
 
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,29 +19,20 @@ public class MainActivity extends AppCompatActivity {
 
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
 
-        //urlBuilder.setParameter(WIDTH,"200");
-        //urlBuilder.setParameter(HEIGHT,"300");
-
-        //urlBuilder.setParameter("custom","hello world");
-        //urlBuilder.setParameter("hello world","custom");
-        //urlBuilder.setParameter("custom","value");
-        //urlBuilder.setHttps(false);
-        //urlBuilder.setParameter("custom2","value2");
-        //urlBuilder.setParameter(RESIZE, RESIZE_NONE);
-        //urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
-        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
-        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
-        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
-        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
+//        urlBuilder.setParameter(WIDTH,"200");
+//        urlBuilder.setParameter(HEIGHT,"300");
+//        urlBuilder.setParameter("custom","value");
+//        urlBuilder.setHttps(false);
+//        urlBuilder.setParameter(RESIZE, RESIZE_NONE);
+//        urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
+        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
 
 
-
-        //urlBuilder.setParameter(WIDTH,"200");
-        //urlBuilder.setParameter(HEIGHT,"300");
-
-
-
-        System.out.println(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"));
+        // prints out https://beek.dexecure.net/photos/248797/pexels-photo-248797.jpeg?opt=mild
+        System.out.println(urlBuilder.createURL("/photos/248797/pexels-photo-248797.jpeg"));
 
     }
 }
