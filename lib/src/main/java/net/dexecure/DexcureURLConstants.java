@@ -1,6 +1,6 @@
-package net.dexecure.dexassets.lib;
+package net.dexecure;
 
-public interface DexcureUrlConstants {
+public interface DexcureURLConstants {
 
     //TODO for keys
     String RESIZE = "resize";

@@ -4,22 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.dexecure.dexassets.lib.DexecureURLBuilder;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_CENTER;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.HEIGHT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_AGGRESSIVE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_DEFAULT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MILD;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_NONE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE_NONE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
+import net.dexecure.DexecureURLBuilder;
 
 public class MainActivity extends AppCompatActivity {
 

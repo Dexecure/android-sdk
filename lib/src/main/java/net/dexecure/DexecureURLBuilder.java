@@ -1,4 +1,4 @@
-package net.dexecure.dexassets.lib;
+package net.dexecure;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -8,15 +8,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.HEIGHT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_AGGRESSIVE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_DEFAULT;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MILD;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_MODE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.OPTIMIZATION_NONE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE;
-import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
+import static net.dexecure.DexcureURLConstants.CROP_MODE;
+import static net.dexecure.DexcureURLConstants.HEIGHT;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+import static net.dexecure.DexcureURLConstants.RESIZE;
+import static net.dexecure.DexcureURLConstants.WIDTH;
 
 public class DexecureURLBuilder {
 
