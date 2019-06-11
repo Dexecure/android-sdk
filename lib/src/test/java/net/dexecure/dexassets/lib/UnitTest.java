@@ -103,7 +103,7 @@ public class UnitTest {
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
         urlBuilder.setParameter("resize_c", "w300,h200");
         System.out.println(urlBuilder);
-        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300,h200");
+        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300%2Ch200");
     }
 
     @Test
