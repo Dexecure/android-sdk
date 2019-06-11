@@ -1,11 +1,8 @@
 package net.dexecure.dexassets.lib;
 
-import androidx.test.runner.AndroidJUnit4;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_CENTER;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.CROP_MODE;
@@ -20,8 +17,6 @@ import static net.dexecure.dexassets.lib.DexcureUrlConstants.RESIZE_NONE;
 import static net.dexecure.dexassets.lib.DexcureUrlConstants.WIDTH;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("deprecation")
-@RunWith(AndroidJUnit4.class)
 public class UnitTest {
 
     @Rule
@@ -99,6 +94,14 @@ public class UnitTest {
         urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
         urlBuilder.setParameter(WIDTH, "300");
         urlBuilder.setParameter(HEIGHT, "200");
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300,h200");
+    }
+
+    @Test
+    public void urlBuildResizeCenterCropWidthHeightWithoutConstants() {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        urlBuilder.setParameter("resize_c", "w300,h200");
         System.out.println(urlBuilder);
         assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize_c=w300,h200");
     }
