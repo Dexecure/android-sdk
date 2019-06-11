@@ -123,6 +123,14 @@ public class UnitTest {
     }
 
     @Test
+    public void urlBuildOptimizationDefaultWithoutConstants() {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        urlBuilder.setParameter("opt", "default");
+        System.out.println(urlBuilder);
+        assertEquals(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"), "https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?opt=default");
+    }
+
+    @Test
     public void urlBuildOptimizationMild() {
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
