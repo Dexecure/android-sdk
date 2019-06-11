@@ -22,12 +22,14 @@ public class DexecureURLBuilder {
 
     private String domain;
     private String path;
-    private boolean isHttps = true;
-    private Map<String, String> parameters = new LinkedHashMap<>();
+    private boolean isHttps;
+    private Map<String, String> parameters;
     private static String url;
 
     public DexecureURLBuilder(String domain) {
         this.domain = domain;
+        isHttps = true;
+        parameters = new LinkedHashMap<>();
     }
 
     public void setParameter(String key, String value) {
