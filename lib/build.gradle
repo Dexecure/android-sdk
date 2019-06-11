@@ -49,9 +49,9 @@ ext {
     bintrayName = 'android-sdk'
     bintrayOrg = 'dexecure'
 
-    publishedGroupId = 'net.dexecure.dexassets'
+    publishedGroupId = 'net.dexecure'
     libraryName = 'Dexecureimageresizing'
-    artifact = 'lib'
+    artifact = 'android-sdk'
 
     libraryDescription = 'Dexecure library for optimising assets'
 
@@ -59,7 +59,7 @@ ext {
     gitUrl = 'https://github.com/Dexecure/android-sdk.git'
 
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.3'
 
     developerId = 'dexecure'
     developerName = 'dexecure'
