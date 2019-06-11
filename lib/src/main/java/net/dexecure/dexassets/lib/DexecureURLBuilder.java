@@ -87,25 +87,15 @@ public class DexecureURLBuilder {
                     queryPairs.add(OPTIMIZATION_MODE + "=" + v);
                     break;
                 case CROP_MODE:
-                    queryPairs.add(v);
+                    queryPairs.add(CROP_MODE + "=" + v);
                     break;
                 case WIDTH:
                 case HEIGHT:
-                    if (queryPairs.contains("resize_c")) {
-                        queryPairs.remove("resize_c");
-                        if (queryPairs.contains(url)) {
-                            queryPairs.add(k + encodedValue);
-                        } else {
-                            queryPairs.add("resize_c=" + k + encodedValue);
-                            url = "resize_c=" + k + encodedValue;
-                        }
+                    if (queryPairs.contains(url)) {
+                        queryPairs.add(k + encodedValue);
                     } else {
-                        if (queryPairs.contains(url)) {
-                            queryPairs.add(k + encodedValue);
-                        } else {
-                            queryPairs.add("resize=" + k + encodedValue);
-                            url = "resize=" + k + encodedValue;
-                        }
+                        queryPairs.add("resize=" + k + encodedValue);
+                        url = "resize=" + k + encodedValue;
                     }
                     break;
                 default:

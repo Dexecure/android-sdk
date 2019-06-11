@@ -4,11 +4,11 @@ public interface DexcureUrlConstants {
 
     //TODO for keys
     String RESIZE = "resize";
-    String CROP_MODE = "crop_mode";
+    String CROP_MODE = "crop";
     String OPTIMIZATION_MODE = "opt";
 
     //TODO for values
-    String CROP_CENTER = "resize_c";
+    String CROP_CENTER = "center";
     String RESIZE_NONE = "none";
     String OPTIMIZATION_DEFAULT = "default";
     String OPTIMIZATION_MILD = "mild";
