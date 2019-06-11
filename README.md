@@ -17,7 +17,7 @@ To add Dexecure-Java to your project, include the following in your project's bu
 ```
 dependencies {
 
-   compile 'net.dexecure.dexassets:lib:0.0.1'
+   compile 'net.dexecure:lib:0.0.1'
   
 }
 ```
@@ -50,82 +50,30 @@ Dependencies for running tests (junit, etc) are provided (in android-sdk/lib/src
 To begin creating dexecure URLs programmatically, simply add the jar to your project's classpath and import the dexecure library. The URL builder can be reused to create URLs for any images on the domains it is provided.
 
 ```
-package net.dexecure.dexassets.sample;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
 
-import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class DexecureExample  {
 
-import net.dexecure.dexassets.dexecurelib.DexecureURLBuilder;
+    public static void main(String[] args) {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+//        urlBuilder.setHttps(false);
+//        urlBuilder.setParameter(WIDTH,"200");
+//        urlBuilder.setParameter(HEIGHT,"300");
+//        urlBuilder.setParameter("custom","value");
+//        urlBuilder.setParameter(RESIZE, RESIZE_NONE);
+//        urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
+//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
+        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
 
-import java.util.LinkedHashMap;
 
-import java.util.Map;
-
-import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.HEIGHT;
-
-import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
-
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put(RESIZE, "");
-        params.put(HEIGHT, "200");
-        params.put(WIDTH, "300");
-
-        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",false,params);
-        System.out.println(urlMaker.getURL());
+        // prints out https://beek.dexecure.net/photos/248797/pexels-photo-248797.jpeg?opt=mild
+        System.out.println(urlBuilder.createURL("/photos/248797/pexels-photo-248797.jpeg"));
     }
 }
 ```
 
-// Prints out: https://beek.dexecure.net/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?resize=h200,w300
-
-
-For HTTPS support, simply pass true in DexecureURLBuilder() constructor on the builder like : -
-
- DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
- 
-For use all types of URL you can simply use like :- uncomment one by one, but only two URLs RESIZE &   RESIZE_WITH_CENTER_CROP we pass height and width and for remaining you can use only 
-
-```
- Map<String, String> params = new LinkedHashMap<>();
- 
- params.put(DISABLE_RESIZE,"");
-```         
-         OR
-```         
- Map<String, String> params = new LinkedHashMap<>();
- 
- params.put(OPTIMIZATION_DEFAULT, "");
- 
-  @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put(RESIZE, "");
-
-        //params.put(RESIZE_WITH_CENTER_CROP, "");
-        //params.put(DISABLE_RESIZE,"");
-        //params.put(OPTIMIZATION_DEFAULT, "");
-        //params.put(OPTIMIZATION_MILD, "");
-        //params.put(OPTIMIZATION_AGGRESSIVE, "");
-        //params.put(OPTIMIZATION_NONE,"");
-
-
-        params.put(HEIGHT, "200");
-        params.put(WIDTH, "300");
-
-        //params.put("sdfsdfcd", "plkgdj");
-
-        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",true,params);
-        System.out.println(urlMaker.getURL());
-
-    }
-```
+For an sample app, check [here](https://github.com/Dexecure/android-sdk/tree/master/app) and see [our test suite](https://github.com/Dexecure/android-sdk/blob/master/lib/src/test/java/net/dexecure/UnitTest.java) for other examples of using our SDK
