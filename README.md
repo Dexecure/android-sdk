@@ -43,13 +43,12 @@ To run tests clone this project and run:
 
 ```gradle test```
 
-Dependencies for running tests (junit, etc) are provided (in android-sdk/lib/src/androidTest/java/net/dexecure/dexassets/lib/ and referenced in the build config).
-
 # Basic Usage
 
 To begin creating dexecure URLs programmatically, simply add the jar to your project's classpath and import the dexecure library. The URL builder can be reused to create URLs for any images on the domains it is provided.
 
 ```
+import net.dexecure.DexecureURLBuilder;
 import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
 import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
 
@@ -58,15 +57,15 @@ public class DexecureExample  {
 
     public static void main(String[] args) {
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
-//        urlBuilder.setHttps(false);
-//        urlBuilder.setParameter(WIDTH,"200");
-//        urlBuilder.setParameter(HEIGHT,"300");
-//        urlBuilder.setParameter("custom","value");
-//        urlBuilder.setParameter(RESIZE, RESIZE_NONE);
-//        urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
-//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
-//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
-//        urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
+        // urlBuilder.setHttps(false);
+        // urlBuilder.setParameter(WIDTH,"200");
+        // urlBuilder.setParameter(HEIGHT,"300");
+        // urlBuilder.setParameter("custom","value");
+        // urlBuilder.setParameter(RESIZE, RESIZE_NONE);
+        // urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
+        // urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
+        // urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
+        // urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
         urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
 
 
