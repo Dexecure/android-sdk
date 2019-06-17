@@ -49,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
         //urlBuilder.setParameter(WIDTH,"200");
         //urlBuilder.setParameter(HEIGHT,"250");
 
-        //Merged code commited   
-
-
-
         System.out.println(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"));
 
     }
