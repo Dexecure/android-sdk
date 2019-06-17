@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //urlBuilder.setParameter(WIDTH,"200");
         //urlBuilder.setParameter(HEIGHT,"250");
 
-        //Merged code commited
+        //Merged code commited   
 
 
 
