@@ -4,45 +4,54 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.dexecure.dexassets.dexecurelib.DexecureURLBuilder;
+import net.dexecure.DexecureURLBuilder;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import static net.dexecure.DexcureURLConstants.CROP_CENTER;
+import static net.dexecure.DexcureURLConstants.CROP_MODE;
+import static net.dexecure.DexcureURLConstants.HEIGHT;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_AGGRESSIVE;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_DEFAULT;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_NONE;
+import static net.dexecure.DexcureURLConstants.RESIZE;
+import static net.dexecure.DexcureURLConstants.RESIZE_NONE;
+import static net.dexecure.DexcureURLConstants.WIDTH;
 
-import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.HEIGHT;
-import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.RESIZE;
-import static net.dexecure.dexassets.dexecurelib.DexcureUrlConstants.WIDTH;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put(RESIZE, "");
-        //params.put(RESIZE_WITH_CENTER_CROP, "");
-        //params.put(DISABLE_RESIZE,"");
-        //params.put(OPTIMIZATION_DEFAULT, "");
-        //params.put(OPTIMIZATION_MILD, "");
-        //params.put(OPTIMIZATION_AGGRESSIVE, "");
-        //params.put(OPTIMIZATION_NONE,"");
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+
+        //urlBuilder.setParameter(WIDTH,"200");
+        //urlBuilder.setParameter(HEIGHT,"300");
+
+        //urlBuilder.setParameter("custom","hello world");
+        //urlBuilder.setParameter("hello world","yes");
+        //urlBuilder.setParameter("custom","value");
+        //urlBuilder.setHttps(false);
+        //urlBuilder.setParameter("custom2","value2");
+        //urlBuilder.setParameter(RESIZE, RESIZE_NONE);
+        //urlBuilder.setParameter(CROP_MODE, CROP_CENTER);
+        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_DEFAULT);
+        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_MILD);
+        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_AGGRESSIVE);
+        //urlBuilder.setParameter(OPTIMIZATION_MODE, OPTIMIZATION_NONE);
+
+        //urlBuilder.setParameter("opt", "default");
 
 
-        //params.put(HEIGHT, "200");
-        //params.put(WIDTH, "300");
-
-        //params.put("sdfsdfcd", "plkgdj");
-
-        DexecureURLBuilder urlMaker = new DexecureURLBuilder("beek.dexecure.net", "/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", true,params);
-        urlMaker.setParameter(HEIGHT, 200);
-        urlMaker.setParameter(WIDTH, 300);
-        System.out.println(urlMaker.getURL());
+        //urlBuilder.setParameter(WIDTH,"200");
+        //urlBuilder.setParameter(HEIGHT,"250");
 
 
 
+        System.out.println(urlBuilder.createURL("/proxy/https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"));
 
     }
 }
