@@ -94,4 +94,4 @@ public class DexecureExample  {
 }
 ```
 
-For an sample app, check [here](https://github.com/Dexecure/android-sdk/blob/master/app/src/main/java/net/dexecure/dexassets/sample/MainActivity.java) and see [our test suite](https://github.com/Dexecure/android-sdk/blob/master/dexecure/src/androidTest/java/net/dexecure/UnitTest.java) for other examples of using our SDK
+For an sample app, check [here](https://github.com/Dexecure/android-sdk/blob/master/app/src/main/java/net/dexecure/dexassets/sample/MainActivity.java) and see [our test suite](https://github.com/Dexecure/android-sdk/blob/master/dexecure/src/test/java/net/dexecure/UnitTest.java) for other examples of using our SDK
