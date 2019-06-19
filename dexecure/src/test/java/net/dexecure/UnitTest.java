@@ -1,6 +1,6 @@
 package net.dexecure;
 
-import androidx.test.runner.AndroidJUnit4;
+import org.junit.runners.JUnit4;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @SuppressWarnings("deprecation")
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class UnitTest {
 
     @Rule
