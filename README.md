@@ -1,6 +1,6 @@
 Android SDK for Dexecure
 
-[ ![Download](https://api.bintray.com/packages/dexecure/maven/dexecure-android/images/download.svg?version=0.0.1) ](https://bintray.com/dexecure/maven/dexecure-android/0.0.1/link)
+[ ![Download](https://api.bintray.com/packages/dexecure/maven/dexecure-android/images/download.svg?version=0.0.3) ](https://bintray.com/dexecure/maven/dexecure-android/0.0.1/link)
 
 
 A Java client library for generating URLs with [Dexecure](https://dexecure.com).
@@ -17,7 +17,7 @@ To add Dexecure-Java to your project, include the following in your project's bu
 ```
 dependencies {
 
-   compile 'net.dexecure:dexecure-android:0.0.1'
+   compile 'net.dexecure:dexecure-android:0.0.3'
   
 }
 ```
