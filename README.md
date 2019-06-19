@@ -57,6 +57,29 @@ public class DexecureExample  {
 
     public static void main(String[] args) {
         DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        
+        // prints out https://beek.dexecure.net/photos/248797/pexels-photo-248797.jpeg
+        System.out.println(urlBuilder.createURL("/photos/248797/pexels-photo-248797.jpeg"));
+        
+        // prints out https://beek.dexecure.net/photos/248797/another-photo.jpeg
+        System.out.println(urlBuilder.createURL("/photos/248797/another-photo.jpeg"));
+    }
+}
+```
+
+# Advanced Usage
+
+```
+import net.dexecure.DexecureURLBuilder;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
+import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+
+
+public class DexecureExample  {
+
+    public static void main(String[] args) {
+        DexecureURLBuilder urlBuilder = new DexecureURLBuilder("beek.dexecure.net");
+        // You can set other global options here
         // urlBuilder.setHttps(false);
         // urlBuilder.setParameter(WIDTH,"200");
         // urlBuilder.setParameter(HEIGHT,"300");
