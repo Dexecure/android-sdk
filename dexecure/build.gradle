@@ -46,12 +46,12 @@ dependencies {
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'android-sdk'
+    bintrayName = 'dexecure-android'
     bintrayOrg = 'dexecure'
 
     publishedGroupId = 'net.dexecure'
     libraryName = 'Dexecureimageresizing'
-    artifact = 'android-sdk'
+    artifact = 'dexecure-android'
 
     libraryDescription = 'Dexecure library for optimising assets'
 
@@ -59,7 +59,7 @@ ext {
     gitUrl = 'https://github.com/Dexecure/android-sdk.git'
 
 
-    libraryVersion = '0.0.5'
+    libraryVersion = '0.0.1'
 
     developerId = 'dexecure'
     developerName = 'dexecure'
