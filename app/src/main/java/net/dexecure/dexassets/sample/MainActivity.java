@@ -6,17 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.dexecure.DexecureURLBuilder;
 
-import static net.dexecure.DexcureURLConstants.CROP_CENTER;
-import static net.dexecure.DexcureURLConstants.CROP_MODE;
-import static net.dexecure.DexcureURLConstants.HEIGHT;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_AGGRESSIVE;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_DEFAULT;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_NONE;
-import static net.dexecure.DexcureURLConstants.RESIZE;
-import static net.dexecure.DexcureURLConstants.RESIZE_NONE;
-import static net.dexecure.DexcureURLConstants.WIDTH;
+import static net.dexecure.DexcureURLConstants.*;
 
 
 public class MainActivity extends AppCompatActivity {

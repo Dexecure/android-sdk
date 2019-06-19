@@ -49,9 +49,6 @@ To begin creating dexecure URLs programmatically, simply add the jar to your pro
 
 ```
 import net.dexecure.DexecureURLBuilder;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
-
 
 public class DexecureExample  {
 
@@ -71,8 +68,7 @@ public class DexecureExample  {
 
 ```
 import net.dexecure.DexecureURLBuilder;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MILD;
-import static net.dexecure.DexcureURLConstants.OPTIMIZATION_MODE;
+import static net.dexecure.DexcureURLConstants.*;
 
 
 public class DexecureExample  {
